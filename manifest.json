@@ -1,16 +1,12 @@
 {
   "manifest_version": 3,
-  "name": "QR Code Generator (Offline)",
-  "description": "Beautiful QR codes – 100% offline, dark mode, zero tracking",
-  "version": "2.4",
-  "icons": {
-    "16": "icon.png",
-    "48": "icon.png",
-    "128": "icon.png"
-  },
+  "name": "Neon QR Generator",
+  "description": "Altijd scanbare blauwe QR-codes met zwarte dots",
+  "version": "2.0",
+  "icons": { "128": "icon.png" },
   "action": {
     "default_popup": "index.html",
-    "default_title": "QR Code Generator"
+    "default_title": "Neon QR"
   },
   "offline_enabled": true,
   "content_security_policy": {

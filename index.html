@@ -1,141 +1,70 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="nl">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>QR Code Generator</title>
-    <script src="qr-code-styling.js"></script>
-    <script src="script.js" defer></script>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neon QR</title>
+  <script src="qr-code-styling.js"></script>
+  <script src="script.js" defer></script>
 
   <style>
-    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f4f6f9;margin:0;padding:20px;display:flex;flex-direction:column;align-items:center;min-width:380px;transition:all .4s;color:#222}
-    body.dark{background:#0d0a1a;color:#e879f9}
+    body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f4f6f9;margin:0;padding:15px;color:#222;transition:all .4s;min-width:340px}
+    body.dark{background:#0d0a1a;color:#00d0ff}
+    .container{background:white;padding:20px;border-radius:16px;box-shadow:0 8px 30px rgba(0,0,0,0.15);transition:all .4s}
+    body.dark .container{background:#1a0033;border:2px solid #00d0ff;box-shadow:0 0 35px rgba(0,208,255,0.4)}
+    h1{margin:0 0 12px;font-size:20px;font-weight:800;background:linear-gradient(90deg,#00d0ff,#0088ff);-webkit-background-clip:text;color:transparent;text-align:center}
 
-    .container{background:white;padding:30px;border-radius:20px;box-shadow:0 10px 40px rgba(0,0,0,0.15);width:100%;max-width:420px;text-align:center;transition:all .4s}
-    body.dark .container{background:#1a0d2e;border:2px solid #e879f9;box-shadow:0 0 40px rgba(232,121,249,0.3)}
-
-    h1{margin:0 0 20px;font-size:24px;font-weight:800;background:linear-gradient(90deg,#e879f9,#ff7ac6);background-clip:text;-webkit-background-clip:text;color:transparent}
-    body.dark h1{background:linear-gradient(90deg,#e879f9,#f778ba,#ff9e5c);background-clip:text;-webkit-background-clip:text;color:transparent}
-
-    .dark-mode-row{display:flex;align-items:center;justify-content:space-between;margin:15px 0 25px;padding:0 8px}
-    .dark-mode-row label{font-weight:700;font-size:15px;cursor:pointer;display:flex;align-items:center;gap:10px;color:#888}
-    body.dark .dark-mode-row label{color:#e879f9}
-
-    .switch{position:relative;display:inline-block;width:46px;height:26px;flex-shrink:0}
+    .dark-mode-row{display:flex;align-items:center;justify-content:space-between;margin:10px 0;font-weight:700;font-size:14px}
+    body.dark .dark-mode-row label{color:#00d0ff}
+    .switch{width:40px;height:22px;position:relative;display:inline-block}
     .switch input{opacity:0;width:0;height:0}
-    .slider{position:absolute;cursor:pointer;top:0;left:0;right:0;bottom:0;background:#555;border-radius:34px;transition:.4s;border:2px solid #e879f9}
+    .slider{position:absolute;top:0;left:0;right:0;bottom:0;background:#555;border-radius:34px;border:2px solid #00d0ff;transition:.4s}
     body.dark .slider{background:transparent}
-    .slider:before{position:absolute;content:"";height:18px;width:18px;left:2px;bottom:2px;background:#fff;border-radius:50%;transition:.4s}
-    input:checked + .slider{background:#e879f9}
-    input:checked + .slider:before{transform:translateX(20px)}
+    .slider:before{position:absolute;content:"";height:16px;width:16px;left:2px;bottom:2px;background:white;border-radius:50%;transition:.4s}
+    input:checked+.slider{background:#00d0ff}
+    input:checked+.slider:before{transform:translateX(16px)}
 
-    /* INPUT & SELECT – nu ook in light mode neon-paars accent */
-    input,select{
-        width:100%;
-        padding:14px;
-        margin:10px 0;
-        border:none;
-        border-radius:12px;
-        font-size:16px;
-        box-sizing:border-box;
-        background:#ffffff;
-        color:#222;
-        box-shadow:0 0 0 2px #e879f9 inset;
-        transition:all .3s;
-    }
-    input:focus,select:focus{
-        outline:none;
-        box-shadow:0 0 0 3px #e879f9, 0 0 20px rgba(232,121,249,0.4);
-    }
+    input,select{width:100%;padding:11px 12px;margin:8px 0;border:none;border-radius:10px;font-size:15px;box-shadow:0 0 0 2px #00d0ff inset;background:#fff;color:#222;box-sizing:border-box;transition:all .3s}
+    input:focus,select:focus{outline:none;box-shadow:0 0 0 3px #00d0ff,0 0 15px rgba(0,208,255,0.4)}
+    body.dark input,body.dark select{background:#0d0a1a;color:#00d0ff}
+    body.dark input:focus,body.dark select:focus{box-shadow:0 0 0 3px #00d0ff,0 0 20px rgba(0,208,255,0.6)}
 
-    body.dark input,body.dark select{
-        background:#0d0a1a;
-        color:#e879f9;
-        box-shadow:0 0 0 2px #e879f9 inset;
-    }
-    body.dark input:focus,body.dark select:focus{
-        box-shadow:0 0 0 3px #e879f9, 0 0 25px rgba(232,121,249,0.6);
-    }
+    button{width:100%;padding:12px;margin:8px 0;border:none;border-radius:10px;font-size:15px;font-weight:bold;cursor:pointer}
+    #generateBtn{background:linear-gradient(135deg,#00d0ff,#0068ff);color:white;box-shadow:0 6px 15px rgba(0,208,255,0.4)}
+    #generateBtn:hover{transform:translateY(-1px)}
+    .download-btn{background:linear-gradient(135deg,#00a1ff,#0088ff);color:white;box-shadow:0 6px 15px rgba(0,161,255,0.4)}
+    .download-btn:hover{transform:translateY(-1px)}
 
-    button{
-        width:100%;
-        padding:16px;
-        margin:12px 0;
-        border:none;
-        border-radius:12px;
-        font-size:16px;
-        font-weight:bold;
-        cursor:pointer;
-        transition:all .3s;
-    }
-
-    #generateBtn{
-        background:linear-gradient(135deg,#e879f9,#c084fc);
-        color:white;
-        box-shadow:0 8px 20px rgba(232,121,249,0.4);
-    }
-    #generateBtn:hover{background:linear-gradient(135deg,#d946ef,#a855f7);transform:translateY(-2px)}
-
-    .download-btn{
-        background:linear-gradient(135deg,#ff9e5c,#ff7ac6);
-        color:white;
-        box-shadow:0 8px 20px rgba(255,158,92,0.4);
-    }
-    .download-btn:hover{background:linear-gradient(135deg,#fb923c,#ec4899);transform:translateY(-2px)}
-
-    #qrCanvas{
-        margin:35px auto;
-        padding:30px;
-        background:#ffffff;
-        border-radius:20px;
-        box-shadow:0 10px 40px rgba(0,0,0,0.15);
-        max-width:100%;
-        transition:all .4s;
-    }
-    body.dark #qrCanvas{
-        background:linear-gradient(135deg,#1a0d2e,#2d1b4e);
-        border:3px solid #e879f9;
-        box-shadow:0 0 40px rgba(232,121,249,0.5);
-        padding:35px;
-    }
-</style>
+    #qrCanvas{margin:20px auto;padding:20px;background:#fff;border-radius:16px;box-shadow:0 8px 25px rgba(0,0,0,0.15)}
+    body.dark #qrCanvas{background:#000818;border:3px solid #00d0ff;box-shadow:0 0 35px rgba(0,208,255,0.5);padding:25px}
+  </style>
 </head>
 <body>
 
 <div class="container">
-    <h1>QR Code Generator</h1>
+  <h1>Neon QR</h1>
 
-    <div class="dark-mode-row">
-        <label>
-            Dark Mode
-            <span class="switch">
-                <input type="checkbox" id="darkModeToggle">
-                <span class="slider"></span>
-            </span>
-        </label>
-    </div>
+  <div class="dark-mode-row">
+    <label>Dark Mode
+      <span class="switch"><input type="checkbox" id="darkModeToggle"><span class="slider"></span></span>
+    </label>
+  </div>
 
-    <input type="text" id="text" placeholder="Enter text, URL, WiFi, etc." value="https://example.com">
+  <input type="text" id="text" placeholder="Text / URL" value="https://example.com">
+  <select id="size">
+    <option value="200">200×200</option>
+    <option value="280" selected>280×280</option>
+    <option value="360">360×360</option>
+  </select>
+  <select id="errorCorrection">
+    <option value="M">Medium</option>
+    <option value="Q">High</option>
+    <option value="H" selected>Very High</option>
+  </select>
 
-    <select id="size">
-        <option value="200">200×200 (Small)</option>
-        <option value="300" selected>300×300 (Medium)</option>
-        <option value="400">400×400 (Large)</option>
-        <option value="600">600×600 (Huge)</option>
-    </select>
-
-    <select id="errorCorrection">
-        <option value="L">Low (7%)</option>
-        <option value="M" selected>Medium (15%)</option>
-        <option value="Q">High (25%)</option>
-        <option value="H">Very High (30%)</option>
-    </select>
-
-    <button id="generateBtn">Generate QR Code</button>
-
-    <div id="qrCanvas"></div>
-
-    <button id="downloadBtn" class="download-btn">Download as PNG</button>
+  <button id="generateBtn">Generate</button>
+  <div id="qrCanvas"></div>
+  <button id="downloadBtn" class="download-btn">Download PNG</button>
 </div>
 
 </body>
