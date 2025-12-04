@@ -1,6 +1,8 @@
 # Neon QR Generator – Chrome/Brave/Edge Extension
 
-A fast, beautiful, and 100 % reliable QR code generator with a fixed deep-blue design.
+A fast, beautiful, and 100% reliable QR code generator with a fixed deep-blue design.
+
+![Neon QR Generator screenshot](screenshot.png)
 
 ### Features
 - Fixed deep-blue corners (#0008ff) with black rounded dots → perfect contrast  
@@ -8,22 +10,19 @@ A fast, beautiful, and 100 % reliable QR code generator with a fixed deep-blue d
 - Clean dark mode with neon-blue glow  
 - No unnecessary options → minimal, fast, and foolproof  
 - Fully offline after first use  
-
+- Manifest V3 + CSP compliant  
+- Fits perfectly in one popup (no scrolling)
 
 ### Installation (30 seconds)
 
 1. Click the green **"Code"** button → **"Download ZIP"**  
-2. Extract the ZIP anywhere on your computer  
-   (everything is already included – no extra downloads!)
-
+2. Extract the ZIP anywhere on your computer (everything is already included)  
 3. Open your browser’s extensions page:  
    - Chrome → `chrome://extensions`  
    - Brave → `brave://extensions`  
-   - Edge → `edge://extensions`
-
-4. Turn on **Developer mode** (top-right)
-
-5. Click **"Load unpacked"** and select the extracted folder
+   - Edge → `edge://extensions`  
+4. Turn on **Developer mode** (top-right)  
+5. Click **"Load unpacked"** → select the extracted folder  
 
 The Neon QR icon appears in your toolbar → click it → ready!
 
@@ -33,14 +32,15 @@ The Neon QR icon appears in your toolbar → click it → ready!
 - Click **Generate**  
 - Download with the blue button  
 
-Dark mode is remembered automatically.
+Dark mode preference is saved automatically.
 
 ### Included files
 - `manifest.json`  
 - `index.html`  
 - `script.js`  
-- `qr-code-styling.js` (bundled – works offline)  
-- `icon.png` (optional but included)
+- `qr-code-styling.js`  
+- `icon.png`  
+- `screenshot.jpg` (this preview)
 
 ### License
 Free to use, modify, and share.
