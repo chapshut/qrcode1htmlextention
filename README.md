@@ -10,8 +10,7 @@ A fast, beautiful, and 100% reliable QR code generator with a fixed deep-blue de
 - Clean dark mode with neon-blue glow  
 - No unnecessary options → minimal, fast, and foolproof  
 - Fully offline after first use  
-- Manifest V3 + CSP compliant  
-- Fits perfectly in one popup (no scrolling)
+
 
 ### Installation (30 seconds)
 
@@ -44,5 +43,3 @@ Dark mode preference is saved automatically.
 
 ### License
 Free to use, modify, and share.
-
-Enjoy your perfect blue QR codes!
