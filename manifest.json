@@ -1,0 +1,19 @@
+{
+  "manifest_version": 3,
+  "name": "QR Code Generator (Offline)",
+  "description": "Beautiful QR codes – 100% offline, zero tracking",
+  "version": "2.3",
+  "icons": {
+    "16": "icon.png",
+    "48": "icon.png",
+    "128": "icon.png"
+  },
+  "action": {
+    "default_popup": "index.html",
+    "default_title": "QR Code Generator"
+  },
+  "offline_enabled": true,
+  "content_security_policy": {
+    "extension_pages": "script-src 'self'; object-src 'self'"
+  }
+}

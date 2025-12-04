@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QR Code Generator</title>
+
+    <!-- Local files only -->
+    <script src="qr-code-styling.js"></script>
+    <script src="script.js" defer></script>
+
+    <style>
+        body{font-family:-apple-system,BlinkMacSystemFont,"Segoe UI",Roboto,sans-serif;background:#f4f6f9;margin:0;padding:20px;display:flex;flex-direction:column;align-items:center;min-width:380px}
+        .container{background:white;padding:30px;border-radius:16px;box-shadow:0 10px 40px rgba(0,0,0,0.1);width:100%;text-align:center}
+        h1{margin:0 0 20px;font-size:22px;color:#222}
+        input,select,button{width:100%;padding:14px;margin:10px 0;border:1px solid #ddd;border-radius:10px;font-size:16px;box-sizing:border-box}
+        button{background:#0066ff;color:white;border:none;font-weight:bold;cursor:pointer;transition:background .2s}
+        button:hover{background:#0052cc}
+        #qrCanvas{margin:25px auto;padding:15px;background:white;border-radius:12px;box-shadow:0 4px 20px rgba(0,0,0,0.1);max-width:100%}
+        .download-btn{background:#28a745}
+        .download-btn:hover{background:#218838}
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>QR Code Generator</h1>
+
+    <input type="text" id="text" placeholder="Enter text, URL, WiFi, etc." value="https://example.com">
+
+    <select id="size">
+        <option value="200">200×200 (Small)</option>
+        <option value="300" selected>300×300 (Medium)</option>
+        <option value="400">400×400 (Large)</option>
+        <option value="600">600×600 (Huge)</option>
+    </select>
+
+    <select id="errorCorrection">
+        <option value="L">Low (7%)</option>
+        <option value="M" selected>Medium (15%)</option>
+        <option value="Q">High (25%)</option>
+        <option value="H">Very High (30%)</option>
+    </select>
+
+    <button id="generateBtn">Generate QR Code</button>
+
+    <div id="qrCanvas"></div>
+
+    <button id="downloadBtn" class="download-btn">Download as PNG</button>
+</div>
+
+</body>
+</html>
