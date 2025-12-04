@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
   "name": "QR Code Generator (Offline)",
-  "description": "Beautiful QR codes – 100% offline, zero tracking",
-  "version": "2.3",
+  "description": "Beautiful QR codes – 100% offline, dark mode, zero tracking",
+  "version": "2.4",
   "icons": {
     "16": "icon.png",
     "48": "icon.png",
